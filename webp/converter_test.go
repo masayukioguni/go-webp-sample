@@ -16,7 +16,7 @@ func TestWebp_Decode(t *testing.T) {
 	_, err = Decode(f)
 
 	if !reflect.DeepEqual(err, nil) {
-		t.Errorf("TestWebp_Decode returned %+v, want %+v", err, nil)
+		t.Errorf("TestWebp_Decode returned %+v", err)
 	}
 }
 
