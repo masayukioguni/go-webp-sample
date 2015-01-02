@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/masayukioguni/go-webp/webp"
+	"github.com/masayukioguni/go-webp-sample/webp"
 	"os"
 	"path/filepath"
 )

@@ -1,9 +1,6 @@
 {
-	"ImportPath": "github.com/masayukioguni/go-webp",
+	"ImportPath": "github.com/masayukioguni/go-webp-sample",
 	"GoVersion": "go1.3.3",
-	"Packages": [
-		"./webp"
-	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/chai2010/image",
