@@ -1,0 +1,13 @@
+{
+	"ImportPath": "github.com/masayukioguni/go-webp",
+	"GoVersion": "go1.3.3",
+	"Packages": [
+		"./webp"
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/chai2010/image",
+			"Rev": "30a541887b5459c5d6996ce7255b7b473c6b4f82"
+		}
+	]
+}
