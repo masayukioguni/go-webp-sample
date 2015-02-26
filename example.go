@@ -1,22 +1,45 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/masayukioguni/go-webp-sample/webp"
 	"os"
-	"path/filepath"
 )
 
 func main() {
-	path := filepath.Join("./test-fixtures", "lena.jpg")
+	jpgfile := flag.String("i", "", "jpeg file name")
+	webpfile := flag.String("o", "", "webp file name")
+	lossless := flag.Bool("l", true, "Lossless true/false")
+	quality := flag.Int("q", 50, "quality")
 
-	f, _ := os.Open(path)
+	flag.Parse()
+
+	f, err := os.Open(*jpgfile)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "os.Open failed %v  %v", *jpgfile, err)
+		return
+	}
+
 	defer f.Close()
 
 	m, _ := webp.Decode(f)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "webp.Decode failed %v", err)
+		return
+	}
 
-	toimg, _ := os.Create("lena.webp")
+	toimg, _ := os.Create(*webpfile)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "os.Create failed %v %v", *webpfile, err)
+		return
+	}
 	defer toimg.Close()
 
-	_ = webp.Encode(toimg, m, &webp.Options{false, 50})
+	err = webp.Encode(toimg, m, &webp.Options{Lossless: *lossless, Quality: float32(*quality)})
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "webp.Encode failed %v %v %v", *lossless, *quality, err)
+		return
+	}
 
 }
