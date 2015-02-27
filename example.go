@@ -15,6 +15,8 @@ func main() {
 
 	flag.Parse()
 
+	fmt.Printf("%v %v %v %v", *jpgfile, *webpfile, *lossless, float32(*quality))
+
 	f, err := os.Open(*jpgfile)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "os.Open failed %v  %v", *jpgfile, err)
